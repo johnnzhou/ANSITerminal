@@ -1,7 +1,11 @@
-#if os(Linux)
-  import Glibc
+#if canImport(Glibc)
+import Glibc
+#elseif canImport(Musl)
+import Musl
+#elseif canImport(Darwin)
+import Darwin
 #else
-  import Darwin
+#error("Unknown platfomr")
 #endif
 
 public let ESC = "\u{1B}"  // Escape character (27 or 1B)
